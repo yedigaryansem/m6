@@ -1,4 +1,4 @@
-package firstTest;
+package test_01;
 
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
