@@ -30,7 +30,7 @@ public class TestTaskScenario extends BaseTest {
         Assert.assertTrue(draftPage.isMailInDraftsBySubject(testText));
         draftPage.clickOnDraftBySubject(testText);
         sendMailPopUp.clickOnSendButton();
-//        Assert.assertTrue(draftPage.isMailDisappearedFromDrafts(testText));
+        Assert.assertTrue(draftPage.isMailDisappearedFromDrafts(testText));
         draftPage.navigateToSentPage();
         SentPage sentPage = new SentPage();
         Assert.assertTrue(sentPage.isMailInSentBySubject(testText));
