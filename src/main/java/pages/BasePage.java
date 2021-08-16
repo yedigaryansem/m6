@@ -4,12 +4,12 @@ import java.util.List;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import drivers.RemoteDriver;
 import wait.WaitHelper;
 
-public abstract class BasePage {
+public abstract class BasePage extends RemoteDriver {
 
     @FindBy(xpath = "//span[contains(@class, 'ph-project__user-name')]")
     protected WebElement userInfoDropDown;
@@ -44,7 +44,7 @@ public abstract class BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    protected static final WebDriver driver = new ChromeDriver();
+    protected static final WebDriver driver = getRemoteDriver();
     protected final WaitHelper waitHelper = new WaitHelper(driver);
     public static final String LINK = "https://mail.ru/";
 
@@ -57,8 +57,10 @@ public abstract class BasePage {
     }
 
     public void navigateToDraftsPage() {
+//        waitHelper.waitUntilElementToBeDisappeared();
         waitHelper.wait(draftsButton).click();
     }
+
 
     public void logOut(){
         waitHelper.wait(userInfoDropDown).click();

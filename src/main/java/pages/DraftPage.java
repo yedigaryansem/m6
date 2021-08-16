@@ -19,6 +19,21 @@ public class DraftPage extends BasePage {
         return false;
     }
 
+    public By getMailBuySubject(String subject) {
+        waitHelper.wait(draftsButtonClicked);
+        for (WebElement draft : mailBody) {
+            if (draft.findElement(By.xpath(mailSubject)).getText().equals(subject)) {
+                return By.xpath(mailSubject);
+            }
+        }
+        return null;
+    }
+
+    public void waitForSentMailDisappear(String subject){
+        waitHelper.waitUntilElementToBeDisappeared(getMailBuySubject(subject), subject);
+    }
+
+
     public void clickOnDraftBySubject(String subject){
         waitHelper.wait(draftsButtonClicked);
         for (WebElement draft : mailBody) {

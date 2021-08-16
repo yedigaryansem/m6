@@ -26,9 +26,11 @@ public class LoginPage extends BasePage {
 
     public void login(){
         waitHelper.wait(userName).sendKeys(Constants.USERNAME);
-        waitHelper.wait(enterPasswordButton).click();
+        waitHelper.highLightElementByName("login");
+        waitHelper.pressEnter();
         waitHelper.wait(password).sendKeys(Constants.PASSWORD);
-        waitHelper.wait(loginButton).click();
+        waitHelper.highLightElementByName("password");
+        waitHelper.pressEnter();
     }
 
 }
