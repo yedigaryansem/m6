@@ -1,10 +1,13 @@
 package pages;
 
-import data.Constants;
+import model.User;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.annotations.Listeners;
+import util.TestListener;
 
+@Listeners(TestListener.class)
 public class LoginPage extends BasePage {
 
 
@@ -24,11 +27,12 @@ public class LoginPage extends BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    public void login(){
-        waitHelper.wait(userName).sendKeys(Constants.USERNAME);
+    public void login(User user) {
+        log.info("Login into mail");
+        waitHelper.wait(userName).sendKeys(user.getUsername());
         waitHelper.highLightElementByName("login");
         waitHelper.pressEnter();
-        waitHelper.wait(password).sendKeys(Constants.PASSWORD);
+        waitHelper.wait(password).sendKeys(user.getPassword());
         waitHelper.highLightElementByName("password");
         waitHelper.pressEnter();
     }

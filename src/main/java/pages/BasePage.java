@@ -2,14 +2,18 @@ package pages;
 
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import drivers.RemoteDriver;
+import org.testng.annotations.Listeners;
+import util.TestListener;
 import wait.WaitHelper;
 
-public abstract class BasePage extends RemoteDriver {
+@Listeners(TestListener.class)
+public abstract class BasePage{
 
     @FindBy(xpath = "//span[contains(@class, 'ph-project__user-name')]")
     protected WebElement userInfoDropDown;
@@ -44,9 +48,10 @@ public abstract class BasePage extends RemoteDriver {
         PageFactory.initElements(getDriver(), this);
     }
 
-    protected static final WebDriver driver = getRemoteDriver();
+    protected static final WebDriver driver = getDriver();
     protected final WaitHelper waitHelper = new WaitHelper(driver);
     public static final String LINK = "https://mail.ru/";
+    protected final Logger log = LogManager.getRootLogger();
 
     public static WebDriver getDriver() {
         return driver;
@@ -63,6 +68,7 @@ public abstract class BasePage extends RemoteDriver {
 
 
     public void logOut(){
+        log.info("log out");
         waitHelper.wait(userInfoDropDown).click();
         waitHelper.wait(loggOutButton).click();
     }

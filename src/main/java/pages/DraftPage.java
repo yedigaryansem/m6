@@ -30,6 +30,7 @@ public class DraftPage extends BasePage {
     }
 
     public void waitForSentMailDisappear(String subject){
+        log.info("waiting until sent mail disappear");
         waitHelper.waitUntilElementToBeDisappeared(getMailBuySubject(subject), subject);
     }
 
