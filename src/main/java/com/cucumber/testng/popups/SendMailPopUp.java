@@ -1,9 +1,11 @@
-package popups;
+package com.cucumber.testng.popups;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import pages.BasePage;
+import com.cucumber.testng.pages.BasePage;
+
+import static com.cucumber.testng.driver.DriverManager.getDriver;
 
 public class SendMailPopUp extends BasePage {
 
@@ -23,7 +25,7 @@ public class SendMailPopUp extends BasePage {
     @FindBy(xpath = "//div[contains(@class,'_w')]//div[contains(@class,'com')]//span[contains(@class,'_p')]//span[contains(@class,'w')]")
     private WebElement sendButton;
 
-    @FindBy(xpath = "//button[@data-promo-id='collapse']")
+    @FindBy(xpath = "//button[@com.cucumber.testng.data-promo-id='collapse']")
     private WebElement rollUpdButton;
 
     @FindBy(xpath = "//div[@class = 'layer__controls']//span[@class='button2__wrapper']")

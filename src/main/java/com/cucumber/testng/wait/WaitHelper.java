@@ -1,4 +1,4 @@
-package wait;
+package com.cucumber.testng.wait;
 
 import java.util.List;
 
@@ -7,13 +7,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static com.cucumber.testng.driver.DriverManager.getDriver;
+
 public class WaitHelper {
 
-    private WebDriver driver;
 
-    public WaitHelper(WebDriver driver) {
-        this.driver = driver;
-        wait = new WebDriverWait(this.driver, 60);
+    public WaitHelper() {
+        wait = new WebDriverWait(getDriver(), 60);
     }
 
     private final WebDriverWait wait;
@@ -28,7 +28,7 @@ public class WaitHelper {
     }
 
     public void refreshPage(){
-        this.driver.navigate().refresh();
+        getDriver().navigate().refresh();
     }
 }
 

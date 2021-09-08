@@ -1,13 +1,17 @@
-package pages;
+package com.cucumber.testng.pages;
 
 import java.util.List;
 
+import com.cucumber.testng.driver.DriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import wait.WaitHelper;
+import com.cucumber.testng.wait.WaitHelper;
+import com.cucumber.testng.driver.DriverManager.*;
+
+import static com.cucumber.testng.driver.DriverManager.getDriver;
 
 public abstract class BasePage {
 
@@ -44,13 +48,9 @@ public abstract class BasePage {
         PageFactory.initElements(getDriver(), this);
     }
 
-    protected static final WebDriver driver = new ChromeDriver();
-    protected final WaitHelper waitHelper = new WaitHelper(driver);
+//    protected static final WebDriver driver = new ChromeDriver();
+    protected final WaitHelper waitHelper = new WaitHelper();
     public static final String LINK = "https://mail.ru/";
-
-    public static WebDriver getDriver() {
-        return driver;
-    }
 
     public void navigateToSentPage(){
         waitHelper.wait(sentButton).click();

@@ -1,4 +1,4 @@
-package data;
+package com.cucumber.testng.data;
 
 public class Constants {
 
